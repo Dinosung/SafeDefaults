@@ -17,13 +17,13 @@
   source: {title: "Google Security Blog: How effective is basic account hygiene", url: "https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html", year: 2019}
   also: {title: "Meyer et al., How effective is multifactor authentication (Microsoft)", url: "https://arxiv.org/abs/2305.00945", year: 2023}
   caveat: Prefer an authenticator app or security key over SMS; a study found all five major US carriers could be tricked into SIM swaps (Lee et al., SOUPS 2020).
-  zh: {tip: "开启双重验证（2FA）", finding: "谷歌发现，仅向辅助手机号发送短信验证码，就挡住了 100% 的自动化攻击、96% 的批量钓鱼和 76% 的定向攻击；微软测得多重验证可将账户被盗风险降低 99% 以上。"}
-
+  do: "Turn it on for your email first, then banking and social accounts (Google: myaccount.google.com/security; Apple: Settings > your name > Sign-In & Security). Use an authenticator app or security key if offered; a text-message code is still far better than none."
+  zh: {tip: "开启两步验证（2FA，又称双重认证）", finding: "谷歌发现，仅向辅助手机号发送短信验证码，就挡住了 100% 的自动化攻击、96% 的批量钓鱼和 76% 的定向攻击；微软测得开启后账户被盗风险降低 99% 以上。", do: "先给邮箱开启，再给银行和社交账号开启。能用验证器应用或安全密钥就用；短信验证码也远好于没有。", caveat: "短信验证码可能被换卡（SIM 卡劫持）攻击绕过：一项研究发现美国五大运营商都能被骗办理换卡。"}
 - tip: Use unique passwords for different accounts
   rank: 1
   area: Accounts
   grade: B
-  finding: With one leaked password from another site, targeted guessing broke over 73% of normal users' accounts in a large attack simulation.
+  finding: With one password leaked from another site plus a few personal details, targeted guessing broke over 73% of normal users' accounts within 100 guesses in a large attack simulation.
   source: {title: "Wang et al., Targeted Online Password Guessing (ACM CCS)", url: "https://www.passwordresearch.com/papers/paper763.html", year: 2016}
   caveat: An attack simulation, not observed compromises.
 
@@ -105,24 +105,24 @@
   source: {title: "Florencio & Herley, A Large-Scale Study of Web Password Habits (WWW)", url: "https://www.www2007.cpsc.ucalgary.ca/papers/paper620.pdf", year: 2007}
   also: {title: "Wash et al., Understanding Password Choices (SOUPS)", url: "https://www.usenix.org/system/files/conference/soups2016/soups2016-paper-wash.pdf", year: 2016}
   caveat: Wash et al. measured 134 people for six weeks and found they mostly reuse the passwords they type often. Reuse on low-value sites can be a reasonable trade-off.
-  zh: {tip: "把密码记在脑子里", finding: "靠记忆管理密码的人最终会重复使用密码：一项大型研究发现，普通用户平均只有 6.5 个密码，每个用在 3.9 个网站上。"}
-
+  instead: "Let a password manager create and remember them. The one built into your phone or browser (iCloud Keychain, Google Password Manager) is fine."
+  zh: {tip: "把密码记在脑子里", finding: "靠记忆管理密码的人最终会重复使用密码：一项大型研究发现，普通用户平均只有 6.5 个密码，每个用在 3.9 个网站上。", instead: "让密码管理器替你生成和记住密码，手机或浏览器自带的（iCloud 钥匙串、谷歌密码管理器）就可以。"}
 - tip: Use a mix of letters, numbers and special characters
   rank: 24
   area: Accounts
   grade: X
   finding: NIST's digital identity guidelines say services "shall not" impose composition rules like these; length and checks against known-breached passwords matter more.
   source: {title: "NIST SP 800-63B-4, section 3.1.1.2", url: "https://pages.nist.gov/800-63-4/sp800-63b.html", year: 2025}
-  zh: {tip: "密码要混合字母、数字和符号", finding: "美国 NIST 数字身份指南规定，服务方“不得”强制这类组合规则；长度和排查已泄露密码更重要。"}
-
+  instead: "Make passwords long: three or four random words, or let a password manager generate one."
+  zh: {tip: "密码要混合字母、数字和符号", finding: "美国 NIST 数字身份指南规定，服务方“不得”强制这类组合规则；长度和排查已泄露密码更重要。", instead: "改用长密码：三四个随机单词组成的短语，或者让密码管理器生成。"}
 - tip: Replace letters with symbols in your passwords
   rank: 32
   area: Accounts
   grade: X
   finding: Cracking tools try common substitutions like "@" for "a" first, so they add little strength.
   source: {title: "Ur et al., password perceptions study (CHI), CMU News", url: "https://www.cmu.edu/news/stories/archives/2016/july/password-perceptions.html", year: 2016}
-  zh: {tip: "用符号替换密码中的字母", finding: "破解工具会优先尝试“@ 代替 a”这类常见替换，几乎不增加强度。"}
-
+  instead: "Add length rather than symbols; a password manager's random passwords beat any substitution."
+  zh: {tip: "用符号替换密码中的字母", finding: "破解工具会优先尝试“@ 代替 a”这类常见替换，几乎不增加强度。", instead: "与其加符号，不如加长度；密码管理器生成的随机密码比任何替换都强。"}
 - tip: Update your devices
   rank: 2
   area: Updates & software
@@ -130,8 +130,8 @@
   finding: Across 82 million client hosts in 28,000 enterprises, patching applications on time had a significant effect on malware encounters.
   source: {title: "Kotzias et al., Mind Your Own Business (NDSS)", url: "https://dev.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_03B-1-2_Kotzias_paper.pdf", year: 2019}
   caveat: Enterprise hosts; the authors call the comparison a simple investigation.
-  zh: {tip: "及时更新设备", finding: "在 2.8 万家企业的 8200 万台电脑上，及时打补丁与遇到恶意软件的次数显著相关。"}
-
+  do: "Turn on automatic updates (iPhone: Settings > General > Software Update > Automatic Updates; Android: Settings > System > Software update; Windows: Settings > Windows Update) and restart when asked."
+  zh: {tip: "及时更新设备", finding: "在 2.8 万家企业的 8200 万台电脑上，及时打补丁与遇到恶意软件的次数显著相关。", do: "打开自动更新（iPhone：设置 > 通用 > 软件更新 > 自动更新；Windows：设置 > Windows 更新），提示重启时就重启。", caveat: "数据来自企业电脑；作者称这只是一项简单的比较。"}
 - tip: Turn on automatic updates
   rank: 16
   area: Updates & software
@@ -147,8 +147,8 @@
   finding: Microsoft's telemetry found computers without antivirus 5.5 times more likely to be infected.
   source: {title: "Microsoft Security Intelligence Report v14 (via SANS ISC)", url: "https://isc.sans.edu/diary/15659", year: 2013}
   caveat: Observational vendor data, reported second-hand. Built-in protection (such as Microsoft Defender) counts.
-  zh: {tip: "使用反恶意软件", finding: "微软遥测数据显示，没有杀毒保护的电脑被感染的可能性高出 5.5 倍。"}
-
+  do: "On Windows, keep the built-in Microsoft Defender switched on (Windows Security > Virus & threat protection). Macs, iPhones and Android phones have protection built in; you don't need to buy an extra app."
+  zh: {tip: "使用反恶意软件", finding: "微软遥测数据显示，没有杀毒保护的电脑被感染的可能性是有保护电脑的 5.5 倍。", do: "Windows 上保持自带的 Microsoft Defender 开启即可；Mac、iPhone 和安卓手机都有内置防护，不需要另外购买安全软件。", caveat: "系统自带的防护就算数。这是厂商的观察数据，经第三方转述。"}
 - tip: Keep antivirus up to date
   rank: 12
   area: Updates & software
@@ -156,16 +156,16 @@
   finding: PCs with up-to-date real-time protection had a 0.6% infection rate; with expired protection, 2.2%.
   source: {title: "Microsoft Security Intelligence Report v17 (via Tom's Guide)", url: "https://www.tomsguide.com/us/danger-stale-av-software,news-19928.html", year: 2014}
   caveat: Observational vendor data, reported second-hand.
-  zh: {tip: "保持杀毒软件更新", finding: "实时防护保持更新的电脑感染率为 0.6%，防护过期的为 2.2%。"}
-
+  do: "Nothing to do if you use the built-in protection: it updates with your system. If you pay for an antivirus, don't let the subscription lapse."
+  zh: {tip: "保持杀毒软件更新", finding: "实时防护保持更新的电脑感染率为 0.6%，防护过期的为 2.2%。", do: "用系统自带的防护就无需操作，它会随系统一起更新；如果用付费杀毒软件，别让订阅过期。", caveat: "厂商的观察数据，经第三方转述。"}
 - tip: Install only trusted software
   rank: 18
   area: Updates & software
   grade: A
   finding: Android devices that installed apps only from Google Play were nine times less likely to get a potentially harmful app.
   source: {title: "Google, Android Security 2017 Year in Review", url: "https://android-developers.googleblog.com/2018/03/android-security-2017-year-in-review.html", year: 2018}
-  zh: {tip: "只安装可信来源的软件", finding: "只从 Google Play 安装应用的安卓设备，遇到有害应用的可能性低九倍。"}
-
+  do: "Install apps only from the official store (App Store, Google Play, Microsoft Store) or the maker's own website. On Android, leave \"Install unknown apps\" switched off."
+  zh: {tip: "只安装可信来源的软件", finding: "只从 Google Play 安装应用的安卓设备，装到有害应用的概率只有其他设备的九分之一。", do: "只从官方应用商店或软件官网安装。在中国大陆，可理解为只用手机厂商自带的官方应用商店，不安装来路不明的 APK。"}
 - tip: Don't use an administrator account day to day
   rank: 19
   area: Updates & software
@@ -206,7 +206,7 @@
   rank: 27
   area: Devices
   grade: B
-  finding: In a ransomware survey of public-sector victims, 68% recovered data from backups.
+  finding: In a 2024 ransomware survey, 78% of state and local government victims (68% across all sectors) restored encrypted data from backups.
   source: {title: "Sophos, State of Ransomware in State and Local Government", url: "https://www.sophos.com/en-us/blog/the-state-of-ransomware-in-state-and-local-government-2024", year: 2024}
   caveat: Organisations, not individuals.
 
@@ -251,11 +251,11 @@
   rank: 30
   area: Network & messaging
   grade: X
-  finding: Of 283 Android VPN apps studied, 38% had at least one malware report on VirusTotal and 18% sent traffic without encryption. We found no data showing a benefit for typical users.
+  finding: Of 283 Android VPN apps studied, 38% were flagged as malware by at least one VirusTotal scanner (4% by more than five), and 18% tunnelled traffic without encryption. We found no data showing a benefit for typical users.
   source: {title: "Ikram et al., An Analysis of the Privacy and Security Risks of Android VPN Apps (IMC)", url: "https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf", year: 2016}
   caveat: About the VPN app market; a well-chosen paid VPN would be C (no evidence either way).
-  zh: {tip: "使用 VPN", finding: "一项研究分析了 283 款安卓 VPN 应用：38% 至少被 VirusTotal 报告过一次恶意软件，18% 的流量完全不加密。我们没有找到证明 VPN 对普通用户有益的数据。"}
-
+  instead: "At home you don't need one for safety, and on public Wi-Fi, sites using https are already encrypted. If you want a VPN anyway, pay for one from a known company and avoid free VPN apps."
+  zh: {tip: "使用 VPN", finding: "一项研究分析了 283 款安卓 VPN 应用：38% 至少被一款 VirusTotal 引擎报告为恶意软件（被 5 款以上报告的只有 4%），18% 的应用使用不加密的隧道协议。我们没有找到证明 VPN 对普通用户有益的数据。", instead: "在家上网不需要为安全使用 VPN；公共 Wi-Fi 上，https 网站本身已经加密。如果确实要用，选知名公司的付费服务，避开免费 VPN 应用。", caveat: "这里说的是 VPN 应用市场的安全风险，不涉及访问用途；口碑好的付费 VPN 属于 C（没有证据说明好坏）。"}
 - tip: Beware of sharing personal information with people you don't know
   rank: 34
   area: Scams & privacy
