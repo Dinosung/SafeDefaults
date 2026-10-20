@@ -36,7 +36,7 @@ def test_readme_is_up_to_date():
 
 def test_a_and_x_tips_say_what_to_do():
     for t in TIPS:
-        action = {"A": "do", "X": "instead"}.get(t["grade"])
+        action = {"A": "do", "X": "instead"}.get(t["grade"]) or ("do" if t.get("do") else None)
         if action:
             assert t.get(action), t["tip"]
             zh = t.get("zh", {})

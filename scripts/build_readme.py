@@ -71,19 +71,23 @@ def render(tips: list[dict]) -> str:
         "",
         f"**The {len(tips)} security tips experts rank highest, graded by the evidence that they work.**",
         "",
-        f"Only **{count['A']}** have measured proof that they prevent harm. **{count['C']}** have no direct "
-        f"evidence yet. **{count['X']}**, several of them on popular checklists, have evidence against them.",
+        f"Only **{count['A']}** have measured evidence that they prevent harm. **{count['C']}** have no direct "
+        f"evidence yet, and **{count['X']}** popular ones have evidence against them.",
         "",
         "A C grade means no study has shown the tip works, not that it is bad advice: locking your screen "
         "is still worth doing, and backing up (B) certainly is.",
         "",
-        f"Every grade links to its source. Disagree with one? [Tell us, with evidence]({GRADE_FORM}).",
+        f"Every A, B and X grade links to its source. Disagree with one? [Tell us, with evidence]({GRADE_FORM}).",
         "",
-        "## Start here: the tips with measured proof",
+        "## Start here: the tips with measured evidence",
         "",
     ]
     for t in (t for t in tips if t["grade"] == "A"):
-        out += [f"1. **{t['tip']}.** {t['finding']} ({sources(t)})", "", f"   **Do this:** {t['do']}", ""]
+        out += [f"1. **{t['tip']}.** {t['finding']}{italic(t.get('caveat'))} ({sources(t)})", "",
+                f"   **Do this:** {t['do']}", ""]
+    out += ["### Next: strong indirect evidence", ""]
+    for t in sorted((t for t in tips if t["grade"] == "B" and t.get("do")), key=lambda t: t["rank"]):
+        out += [f"- **{t['tip']}.** {t['finding']} ({sources(t)})", "", f"  **Do this:** {t['do']}", ""]
     out += ["## Popular advice the evidence doesn't back", ""]
     for t in (t for t in tips if t["grade"] == "X"):
         out += [f"- **{t['tip']}.** {t['finding']}{italic(t.get('caveat'))} ({sources(t)})",
@@ -111,11 +115,16 @@ def render(tips: list[dict]) -> str:
     out += [
         "## How this was made",
         "",
-        "The tips are the top 40 from an expert ranking of 374 pieces of security advice found on the web "
-        "([Redmiles et al., USENIX Security 2020](https://securityadvice.cs.umd.edu/expert-ranking.html)), "
+        "The tips are the top 40 from an expert ranking of 374 pieces of security and privacy advice found on "
+        "the web ([Redmiles et al., USENIX Security 2020](https://securityadvice.cs.umd.edu/expert-ranking.html)), "
         "with two near-duplicates merged. That study found experts rated 89% of all the advice as effective, "
         "which leaves people with no way to prioritise. This list adds the missing piece: for each tip, the "
         "best evidence we could find that following it reduces harm, graded as above.",
+        "",
+        "- Each tip in the ranking was rated by about 3 of 41 experts, and neighbouring ranks are close, so treat "
+        "\"top 40\" as a well-regarded set rather than a precise order.",
+        "- Evidence types differ: an A can be an observational vendor comparison, which other differences between "
+        "users may explain. The caveats say so where it applies.",
         "",
         "- Findings are paraphrased; follow each link for the exact wording.",
         "- A grade describes the evidence, not how sensible a tip sounds.",
@@ -148,7 +157,7 @@ def render_zh(tips: list[dict]) -> str:
         f"**专家最看重的 {len(tips)} 条安全建议，按\u201c有没有证据证明有用\u201d打分。**",
         "",
         f"只有 **{count['A']}** 条有实测证据证明能减少损失；**{count['C']}** 条还没有找到直接证据；"
-        f"**{count['X']}** 条（其中几条出现在热门清单上）的证据反而不支持。",
+        f"还有 **{count['X']}** 条流行建议的证据反而不支持。",
         "",
         "C 只说明还没有研究证明它有效，不代表建议不好：离开时锁屏依然值得做，备份数据（B）更是如此。",
         "",
@@ -166,6 +175,10 @@ def render_zh(tips: list[dict]) -> str:
         out += [f"1. **{zh['tip']}**：{zh['finding']}（来源：{sources(t)}）", "", f"   **怎么做：** {zh['do']}"]
         out += ["", f"   *{zh['caveat']}*"] if zh.get("caveat") else []
         out += [""]
+    out += ["### 接下来：有较强间接证据的建议", ""]
+    for t in sorted((t for t in tips if t["grade"] == "B" and t.get("do")), key=lambda t: t["rank"]):
+        zh = t["zh"]
+        out += [f"- **{zh['tip']}**：{zh['finding']}（来源：{sources(t)}）", "", f"  **怎么做：** {zh['do']}", ""]
     out += ["## 证据并不支持的热门建议", ""]
     for t in (t for t in tips if t["grade"] == "X"):
         zh = t["zh"]
@@ -179,7 +192,9 @@ def render_zh(tips: list[dict]) -> str:
         "（[Redmiles 等，USENIX Security 2020](https://securityadvice.cs.umd.edu/expert-ranking.html)）"
         f"中排名前 40 的条目，其中两条几乎相同的建议已合并，共 {len(tips)} 条。"
         "该研究发现专家认为 89% 的网上安全建议都\u201c有效\u201d，普通人因此无从取舍。"
-        "我们为每条建议找出最好的证据，并按上面的标准打分。",
+        "我们为每条建议找出最好的证据，并按上面的标准打分。"
+        "排名中每条建议只由约 41 位专家中的 3 位评分，相邻名次差距很小，"
+        "因此\u201c前 40\u201d应理解为一组公认的好建议，而非精确排序。",
         "",
         f"全部 {len(tips)} 条建议及其来源见[英文版完整表格](README.md#all-tips)。"
         "本项目面向个人，不构成专业建议。",
