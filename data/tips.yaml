@@ -16,6 +16,7 @@
   finding: Google found an SMS code to a recovery phone blocked 100% of automated bots, 96% of bulk phishing and 76% of targeted attacks; Microsoft measured MFA cutting compromise risk by over 99%.
   source: {title: "Google Security Blog: How effective is basic account hygiene", url: "https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html", year: 2019}
   also: {title: "Meyer et al., How effective is multifactor authentication (Microsoft)", url: "https://arxiv.org/abs/2305.00945", year: 2023}
+  caveat: Prefer an authenticator app or security key over SMS; a study found all five major US carriers could be tricked into SIM swaps (Lee et al., SOUPS 2020).
 
 - tip: Use unique passwords for different accounts
   rank: 1
@@ -59,8 +60,10 @@
 - tip: Don't tell anyone your passwords, even IT
   rank: 7
   area: Accounts
-  grade: C
-  finding: Plausible (pretexting scams ask for passwords), but no data on the effect of this behaviour was found.
+  grade: B
+  finding: Google found people who had handed their password to a phisher were 400 times more likely to have their account hijacked than a random user.
+  source: {title: "Thomas et al., Data breaches, phishing, or malware? Understanding the risks of stolen credentials (ACM CCS)", url: "https://research.google/pubs/data-breaches-phishing-or-malware-understanding-the-risks-of-stolen-credentials/", year: 2017}
+  caveat: About disclosure to impostors posing as trusted parties, not to friends or real IT staff.
 
 - tip: Keep written-down passwords somewhere safe
   rank: 10
@@ -84,7 +87,8 @@
   rank: 33
   area: Accounts
   grade: C
-  finding: No data on the behaviour's effect for individuals was found.
+  finding: No data on the benefit for individuals was found. One study found 89.5% of 95 sites using single sign-on offered no way to end active sessions, so a hijacked sign-in account can be hard to recover from.
+  source: {title: "Ghasemisharif et al., O Single Sign-Off, Where Art Thou? (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity18/presentation/ghasemisharif", year: 2018}
 
 - tip: Encourage others to use strong passwords
   rank: 6
@@ -98,15 +102,15 @@
   grade: X
   finding: People who memorise passwords end up reusing them; a large study found the average user had 6.5 passwords shared across 3.9 sites each. Memorising at scale works against unique passwords.
   source: {title: "Florencio & Herley, A Large-Scale Study of Web Password Habits (WWW)", url: "https://www.www2007.cpsc.ucalgary.ca/papers/paper620.pdf", year: 2007}
-  caveat: An inference from reuse data, not a direct test.
+  also: {title: "Wash et al., Understanding Password Choices (SOUPS)", url: "https://www.usenix.org/system/files/conference/soups2016/soups2016-paper-wash.pdf", year: 2016}
+  caveat: Wash et al. measured 134 people for six weeks and found they mostly reuse the passwords they type often. Reuse on low-value sites can be a reasonable trade-off.
 
 - tip: Use a mix of letters, numbers and special characters
   rank: 24
   area: Accounts
   grade: X
-  finding: NIST's digital identity guidelines tell services not to impose composition rules like these; length and checks against known-breached passwords matter more. Revision 4 (August 2025) reportedly tightened "should not" to "shall not".
-  source: {title: "NIST SP 800-63B (Revision 3), section 5.1.1.2", url: "https://pages.nist.gov/800-63-3/sp800-63b.html", year: 2017}
-  also: {title: "Enzoic, summary of NIST SP 800-63B Revision 4", url: "https://www.enzoic.com/blog/nist-sp-800-63b-rev4/", year: 2025}
+  finding: NIST's digital identity guidelines say services "shall not" impose composition rules like these; length and checks against known-breached passwords matter more.
+  source: {title: "NIST SP 800-63B-4, section 3.1.1.2", url: "https://pages.nist.gov/800-63-4/sp800-63b.html", year: 2025}
 
 - tip: Replace letters with symbols in your passwords
   rank: 32
@@ -267,18 +271,24 @@
   rank: 28
   area: Scams & privacy
   grade: C
-  finding: Studies of parental rules exist with mixed results; none was checked for this list yet.
+  finding: The evidence is mixed. In a survey of 25,142 European children, rules were linked with lower online risk (and fewer opportunities); in a US study of 215 parent-teen pairs, more parental control was linked with more risk.
+  source: {title: "Duerager & Livingstone, How can parents support children's internet safety? (EU Kids Online, LSE)", url: "https://eprints.lse.ac.uk/42872/", year: 2012}
+  also: {title: "Ghosh et al., A Matter of Control or Safety? (CHI)", url: "https://pure.psu.edu/en/publications/a-matter-of-control-or-safety-examining-parental-use-of-technical/", year: 2018}
+  caveat: Associations with exposure to risk, not measured harm.
 
 - tip: Don't click on ads
   rank: 40
   area: Scams & privacy
-  grade: C
-  finding: Malicious ads mostly attack without a click; no data on the behaviour was found.
+  grade: B
+  finding: Over 80% of the social-engineering download attacks seen on a large network started from ads on sites people visited, mostly pushing adware and unwanted programs.
+  source: {title: "Nelms et al., Towards Measuring and Mitigating Social Engineering Software Download Attacks (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/nelms", year: 2016}
+  caveat: Shows the threat is common, not the effect of avoiding clicks.
 
 - tip: Watch out for phishing
   rank: 36
   area: Scams & privacy
-  grade: C
-  finding: Phishing is common, but the usual way people are taught to watch out for it has weak evidence. In a study of over 19,500 hospital employees, recently completing security awareness training made no significant difference to how often people failed phishing tests.
-  source: {title: "Ho et al., Understanding the Efficacy of Phishing Training in Practice (IEEE S&P)", url: "https://sysnet.ucsd.edu/~voelker/pubs/phishtrain-oakland25.pdf", year: 2025}
-  caveat: Stay alert anyway; the defence with measured effect is 2-factor authentication (see above), which blocked 96% of bulk phishing in Google's study.
+  grade: B
+  finding: Phishing victims were 400 times more likely to have their account hijacked than a random Google user, and phishing was the most-reported crime type to the FBI in 2024 (193,407 complaints).
+  source: {title: "Thomas et al., Data breaches, phishing, or malware? Understanding the risks of stolen credentials (ACM CCS)", url: "https://research.google/pubs/data-breaches-phishing-or-malware-understanding-the-risks-of-stolen-credentials/", year: 2017}
+  also: {title: "FBI IC3, 2024 Internet Crime Report", url: "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf", year: 2025}
+  caveat: The threat is well measured; the usual defence, awareness training, is not. In a study of over 19,500 hospital employees, recent training made no significant difference to phishing test failures (Ho et al., IEEE S&P 2025). 2-factor authentication blocked 96% of bulk phishing in Google's study.
