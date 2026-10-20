@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: If you use this list or its grades, please cite it as below.
+title: "SafeDefaults: security tips graded by the evidence that they work"
+authors:
+  - alias: Dinosung
+repository-code: https://github.com/Dinosung/safedefaults
+license: CC-BY-4.0
+type: dataset
+date-released: 2026-10-20
+keywords:
+  - security
+  - privacy
+  - security advice
+  - evidence-based
+references:
+  - type: conference-paper
+    title: "A Comprehensive Quality Evaluation of Security and Privacy Advice on the Web"
+    authors:
+      - family-names: Redmiles
+        given-names: Elissa M.
+      - name: et al.
+    conference:
+      name: USENIX Security Symposium
+    year: 2020
+    url: https://securityadvice.cs.umd.edu/expert-ranking.html

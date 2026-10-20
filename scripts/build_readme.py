@@ -34,6 +34,11 @@ def render(tips: list[dict]) -> str:
     out = [
         "# SafeDefaults",
         "",
+        "[![CI](https://github.com/Dinosung/safedefaults/actions/workflows/ci.yml/badge.svg)]"
+        "(https://github.com/Dinosung/safedefaults/actions/workflows/ci.yml) "
+        "[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](LICENSE) "
+        f"![{len(tips)} tips](https://img.shields.io/badge/tips-{len(tips)}-informational.svg)",
+        "",
         "[中文](README.zh-CN.md)",
         "",
         f"**The {len(tips)} security tips experts rank highest, graded by the evidence that they work.**",
@@ -82,9 +87,16 @@ def render(tips: list[dict]) -> str:
         "advice; nobody has measured them.",
         "- This is for individuals, not organisations, and it is not legal or professional advice.",
         "",
-        "## License",
+        "## Contributing",
         "",
-        "Text and data: [CC BY 4.0](LICENSE). The README is generated from [`data/tips.yaml`](data/tips.yaml).",
+        "Grades move on evidence. To challenge one, [open a grade issue]"
+        "(https://github.com/Dinosung/safedefaults/issues/new?template=grade.yml) with the source and the exact "
+        "sentence or number; see [CONTRIBUTING.md](CONTRIBUTING.md) for the rubric.",
+        "",
+        "## License and citation",
+        "",
+        "Text and data: [CC BY 4.0](LICENSE). The README is generated from [`data/tips.yaml`](data/tips.yaml). "
+        "To cite the list, use [`CITATION.cff`](CITATION.cff) (GitHub's \"Cite this repository\" button).",
         "",
     ]
     return "\n".join(out)
