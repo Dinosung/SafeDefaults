@@ -17,6 +17,7 @@
   source: {title: "Google Security Blog: How effective is basic account hygiene", url: "https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html", year: 2019}
   also: {title: "Meyer et al., How effective is multifactor authentication (Microsoft)", url: "https://arxiv.org/abs/2305.00945", year: 2023}
   caveat: Prefer an authenticator app or security key over SMS; a study found all five major US carriers could be tricked into SIM swaps (Lee et al., SOUPS 2020).
+  zh: {tip: "开启双重验证（2FA）", finding: "谷歌发现，仅向辅助手机号发送短信验证码，就挡住了 100% 的自动化攻击、96% 的批量钓鱼和 76% 的定向攻击；微软测得多重验证可将账户被盗风险降低 99% 以上。"}
 
 - tip: Use unique passwords for different accounts
   rank: 1
@@ -104,6 +105,7 @@
   source: {title: "Florencio & Herley, A Large-Scale Study of Web Password Habits (WWW)", url: "https://www.www2007.cpsc.ucalgary.ca/papers/paper620.pdf", year: 2007}
   also: {title: "Wash et al., Understanding Password Choices (SOUPS)", url: "https://www.usenix.org/system/files/conference/soups2016/soups2016-paper-wash.pdf", year: 2016}
   caveat: Wash et al. measured 134 people for six weeks and found they mostly reuse the passwords they type often. Reuse on low-value sites can be a reasonable trade-off.
+  zh: {tip: "把密码记在脑子里", finding: "靠记忆管理密码的人最终会重复使用密码：一项大型研究发现，普通用户平均只有 6.5 个密码，每个用在 3.9 个网站上。"}
 
 - tip: Use a mix of letters, numbers and special characters
   rank: 24
@@ -111,6 +113,7 @@
   grade: X
   finding: NIST's digital identity guidelines say services "shall not" impose composition rules like these; length and checks against known-breached passwords matter more.
   source: {title: "NIST SP 800-63B-4, section 3.1.1.2", url: "https://pages.nist.gov/800-63-4/sp800-63b.html", year: 2025}
+  zh: {tip: "密码要混合字母、数字和符号", finding: "美国 NIST 数字身份指南规定，服务方“不得”强制这类组合规则；长度和排查已泄露密码更重要。"}
 
 - tip: Replace letters with symbols in your passwords
   rank: 32
@@ -118,6 +121,7 @@
   grade: X
   finding: Cracking tools try common substitutions like "@" for "a" first, so they add little strength.
   source: {title: "Ur et al., password perceptions study (CHI), CMU News", url: "https://www.cmu.edu/news/stories/archives/2016/july/password-perceptions.html", year: 2016}
+  zh: {tip: "用符号替换密码中的字母", finding: "破解工具会优先尝试“@ 代替 a”这类常见替换，几乎不增加强度。"}
 
 - tip: Update your devices
   rank: 2
@@ -126,6 +130,7 @@
   finding: Across 82 million client hosts in 28,000 enterprises, patching applications on time had a significant effect on malware encounters.
   source: {title: "Kotzias et al., Mind Your Own Business (NDSS)", url: "https://dev.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_03B-1-2_Kotzias_paper.pdf", year: 2019}
   caveat: Enterprise hosts; the authors call the comparison a simple investigation.
+  zh: {tip: "及时更新设备", finding: "在 2.8 万家企业的 8200 万台电脑上，及时打补丁与遇到恶意软件的次数显著相关。"}
 
 - tip: Turn on automatic updates
   rank: 16
@@ -142,6 +147,7 @@
   finding: Microsoft's telemetry found computers without antivirus 5.5 times more likely to be infected.
   source: {title: "Microsoft Security Intelligence Report v14 (via SANS ISC)", url: "https://isc.sans.edu/diary/15659", year: 2013}
   caveat: Observational vendor data, reported second-hand. Built-in protection (such as Microsoft Defender) counts.
+  zh: {tip: "使用反恶意软件", finding: "微软遥测数据显示，没有杀毒保护的电脑被感染的可能性高出 5.5 倍。"}
 
 - tip: Keep antivirus up to date
   rank: 12
@@ -150,6 +156,7 @@
   finding: PCs with up-to-date real-time protection had a 0.6% infection rate; with expired protection, 2.2%.
   source: {title: "Microsoft Security Intelligence Report v17 (via Tom's Guide)", url: "https://www.tomsguide.com/us/danger-stale-av-software,news-19928.html", year: 2014}
   caveat: Observational vendor data, reported second-hand.
+  zh: {tip: "保持杀毒软件更新", finding: "实时防护保持更新的电脑感染率为 0.6%，防护过期的为 2.2%。"}
 
 - tip: Install only trusted software
   rank: 18
@@ -157,6 +164,7 @@
   grade: A
   finding: Android devices that installed apps only from Google Play were nine times less likely to get a potentially harmful app.
   source: {title: "Google, Android Security 2017 Year in Review", url: "https://android-developers.googleblog.com/2018/03/android-security-2017-year-in-review.html", year: 2018}
+  zh: {tip: "只安装可信来源的软件", finding: "只从 Google Play 安装应用的安卓设备，遇到有害应用的可能性低九倍。"}
 
 - tip: Don't use an administrator account day to day
   rank: 19
@@ -246,6 +254,7 @@
   finding: Of 283 Android VPN apps studied, 38% had at least one malware report on VirusTotal and 18% sent traffic without encryption. We found no data showing a benefit for typical users.
   source: {title: "Ikram et al., An Analysis of the Privacy and Security Risks of Android VPN Apps (IMC)", url: "https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf", year: 2016}
   caveat: About the VPN app market; a well-chosen paid VPN would be C (no evidence either way).
+  zh: {tip: "使用 VPN", finding: "一项研究分析了 283 款安卓 VPN 应用：38% 至少被 VirusTotal 报告过一次恶意软件，18% 的流量完全不加密。我们没有找到证明 VPN 对普通用户有益的数据。"}
 
 - tip: Beware of sharing personal information with people you don't know
   rank: 34
