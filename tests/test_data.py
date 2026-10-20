@@ -30,3 +30,11 @@ def test_ranks_are_unique():
 def test_readme_is_up_to_date():
     readme = (build_readme.ROOT / "README.md").read_text()
     assert readme == build_readme.render(TIPS), "run: python3 scripts/build_readme.py"
+    zh = (build_readme.ROOT / "README.zh-CN.md").read_text()
+    assert zh == build_readme.render_zh(TIPS), "run: python3 scripts/build_readme.py"
+
+
+def test_a_and_x_tips_have_chinese_text():
+    for t in TIPS:
+        if t["grade"] in "AX":
+            assert t.get("zh", {}).get("tip") and t["zh"].get("finding"), t["tip"]

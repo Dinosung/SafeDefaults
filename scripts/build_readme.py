@@ -34,6 +34,8 @@ def render(tips: list[dict]) -> str:
     out = [
         "# SafeDefaults",
         "",
+        "[中文](README.zh-CN.md)",
+        "",
         f"**The {len(tips)} security tips experts rank highest, graded by the evidence that they work.**",
         "",
         f"Only **{count['A']}** have measured proof that they prevent harm. **{count['C']}** have no direct "
@@ -88,5 +90,42 @@ def render(tips: list[dict]) -> str:
     return "\n".join(out)
 
 
+def render_zh(tips: list[dict]) -> str:
+    """A short Chinese summary: counts, the A list and the X list, linking to the full English table."""
+    count = {g: sum(t["grade"] == g for t in tips) for g in GRADES}
+    out = [
+        "# SafeDefaults",
+        "",
+        "[English](README.md)",
+        "",
+        f"**专家最看重的 {len(tips)} 条安全建议，按\u201c有没有证据证明有用\u201d打分。**",
+        "",
+        f"只有 **{count['A']}** 条有实测证据证明能减少损失；**{count['C']}** 条完全没有直接证据；"
+        f"**{count['X']}** 条（其中几条出现在热门清单上）的证据反而不支持。",
+        "",
+        "每个评分都附有来源链接。完整表格见[英文版](README.md#all-tips)。",
+        "",
+        "## 先做这几件事：有实测证据的建议",
+        "",
+        *[f"1. **{t['zh']['tip']}**：{t['zh']['finding']}" for t in tips if t["grade"] == "A"],
+        "",
+        "## 证据并不支持的热门建议",
+        "",
+        *[f"- **{t['zh']['tip']}**：{t['zh']['finding']}" for t in tips if t["grade"] == "X"],
+        "",
+        "## 方法",
+        "",
+        "这些建议来自一项专家排名研究（Redmiles 等，USENIX Security 2020）中排名前 40 的条目。"
+        "该研究发现专家认为 89% 的网上安全建议都\u201c有效\u201d，普通人因此无从取舍。"
+        "我们为每条建议找出最好的证据并按标准打分：A 为实测结果，B 为间接证据，C 为无直接证据，X 为证据不支持。",
+        "",
+        "本项目面向个人，不构成专业建议。欢迎[提交更好的证据](CONTRIBUTING.md)。",
+        "",
+    ]
+    return "\n".join(out)
+
+
 if __name__ == "__main__":
-    (ROOT / "README.md").write_text(render(load()))
+    tips = load()
+    (ROOT / "README.md").write_text(render(tips))
+    (ROOT / "README.zh-CN.md").write_text(render_zh(tips))

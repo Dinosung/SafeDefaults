@@ -1,5 +1,7 @@
 # SafeDefaults
 
+[中文](README.zh-CN.md)
+
 **The 39 security tips experts rank highest, graded by the evidence that they work.**
 
 Only **5** have measured proof that they prevent harm. **16** have no direct evidence at all. **4**, several of them on popular checklists, have evidence against them.
