@@ -3,7 +3,7 @@ message: If you use this list or its grades, please cite it as below.
 title: "SafeDefaults: security tips graded by the evidence that they work"
 authors:
   - alias: Dinosung
-repository-code: https://github.com/Dinosung/safedefaults
+repository-code: https://github.com/Dinosung/SafeDefaults
 license: CC-BY-4.0
 type: dataset
 date-released: 2026-10-20

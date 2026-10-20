@@ -1,16 +1,36 @@
 # Contributing
 
-The point of this list is that every grade can be checked. To change a grade or add a tip, open an
-issue or pull request with:
+The point of this list is that every grade can be checked, so grades move on evidence.
 
-1. **The tip**, in plain words.
-2. **The best evidence you know**: a link to a study, official dataset or large vendor dataset, the
-   year, and the sentence or number that supports your grade.
-3. **The grade it supports**, using the rubric:
-   - **A**: a measured outcome (fewer infections, hijacks or compromises) tied to the behaviour itself.
-   - **B**: indirect evidence: attack simulations, how fast fixes arrive, or how common the threat is.
-   - **C**: no direct evidence found.
-   - **X**: evidence of little or no measured value, or of harm.
+## Not a programmer? Just open an issue
 
-Edit `data/tips.yaml`, then run `python3 scripts/build_readme.py` to regenerate the README.
-Opinions and blog posts without data are welcome in discussion, but can't move a grade above C.
+[Open a grade issue](https://github.com/Dinosung/SafeDefaults/issues/new?template=grade.yml) (a free GitHub
+account is needed) with:
+
+1. **The tip**, as it appears in the list.
+2. **The best evidence you know**: a link to a study, official dataset or large vendor dataset, and, if
+   you can, the sentence or number that supports your grade.
+3. **The grade it supports**, using the rubric below.
+
+We do the editing. Experience and opinions are welcome too, and help us look for evidence, but on their
+own they can't move a grade above C. Issues in Chinese are fine.
+
+## The rubric
+
+- **A**: a measured outcome (fewer infections, hijacks or compromises) tied to the behaviour itself.
+- **B**: indirect evidence: attack simulations, how fast fixes arrive, or how common the threat is.
+- **C**: no direct evidence found.
+- **X**: evidence of little or no measured value, or of harm.
+
+## Editing the data yourself
+
+Everything comes from [`data/tips.yaml`](data/tips.yaml). Edit it, then regenerate both READMEs and
+run the checks:
+
+```sh
+python3 scripts/build_readme.py
+pip install pyyaml pytest && pytest -q
+```
+
+A, B and X tips need a source with a link and year. A tips need a `do` line (what to do, in plain
+words) and X tips an `instead` line; give a Chinese version of both under `zh`.

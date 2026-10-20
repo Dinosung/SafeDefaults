@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Grades move on evidence, not opinion. See the rubric in [CONTRIBUTING.md](https://github.com/Dinosung/safedefaults/blob/main/CONTRIBUTING.md).
+        Grades move on evidence, not opinion. See the rubric in [CONTRIBUTING.md](https://github.com/Dinosung/SafeDefaults/blob/main/CONTRIBUTING.md).
   - type: input
     id: tip
     attributes:
@@ -35,16 +35,17 @@ body:
   - type: input
     id: year
     attributes:
-      label: Year published
-    validations:
-      required: true
+      label: Year published, if you know it
   - type: textarea
     id: quote
     attributes:
       label: The sentence or number that supports the grade
-      description: Quote it exactly, with the page or section.
-    validations:
-      required: true
+      description: Paste it if you can, with the page or section. We'll check the source either way.
+  - type: textarea
+    id: experience
+    attributes:
+      label: Your experience (optional)
+      description: What happened to you or people you know. It can't move a grade alone, but helps us look.
   - type: textarea
     id: notes
     attributes:
