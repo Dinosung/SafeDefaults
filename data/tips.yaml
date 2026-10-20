@@ -1,0 +1,284 @@
+# The 40 security tips that experts ranked highest in Redmiles et al., "A Comprehensive Quality
+# Evaluation of Security and Privacy Advice on the Web" (USENIX Security 2020;
+# https://securityadvice.cs.umd.edu/expert-ranking.html), graded by the evidence that following
+# them reduces harm. Tips 1 and 5 are merged ("use unique passwords" / "use different passwords").
+#
+# grade: A = measured outcome (fewer infections, hijacks, compromises) tied to the behaviour
+#        B = indirect evidence (attack simulations, uptake, how common the threat is)
+#        C = expert opinion only; no data found on the behaviour's effect
+#        X = evidence against: low or no measured value, or harm
+# Findings are paraphrased; follow the link for the exact wording.
+
+- tip: Use 2-factor authentication
+  rank: 22
+  area: Accounts
+  grade: A
+  finding: Google found an SMS code to a recovery phone blocked 100% of automated bots, 96% of bulk phishing and 76% of targeted attacks; Microsoft measured MFA cutting compromise risk by over 99%.
+  source: {title: "Google Security Blog: How effective is basic account hygiene", url: "https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html", year: 2019}
+  also: {title: "Meyer et al., How effective is multifactor authentication (Microsoft)", url: "https://arxiv.org/abs/2305.00945", year: 2023}
+
+- tip: Use unique passwords for different accounts
+  rank: 1
+  area: Accounts
+  grade: B
+  finding: With one leaked password from another site, targeted guessing broke over 73% of normal users' accounts in a large attack simulation.
+  source: {title: "Wang et al., Targeted Online Password Guessing (ACM CCS)", url: "https://www.passwordresearch.com/papers/paper763.html", year: 2016}
+  caveat: An attack simulation, not observed compromises.
+
+- tip: Use strong passwords
+  rank: 15
+  area: Accounts
+  grade: B
+  finding: In guessing experiments, long passwords (16+ characters) resisted a powerful attacker better than short passwords with complex rules.
+  source: {title: "Kelley et al., Guess Again (and Again and Again) (IEEE S&P)", url: "https://users.ece.cmu.edu/~lbauer/papers/2012/oakland2012-guessing.pdf", year: 2012}
+  caveat: Supports length, not complexity rules.
+
+- tip: Don't base passwords on personal information
+  rank: 20
+  area: Accounts
+  grade: B
+  finding: Guessing that uses only a person's public details beat the previous best method by 46% against normal users.
+  source: {title: "Wang et al., Targeted Online Password Guessing (ACM CCS)", url: "https://www.passwordresearch.com/papers/paper763.html", year: 2016}
+
+- tip: Use a password manager
+  rank: 31
+  area: Accounts
+  grade: B
+  finding: Password managers changed password strength, but whether for the better depended on whether people used the built-in generator.
+  source: {title: "Lyastani et al., Better managed than memorized? (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity18/presentation/lyastani", year: 2018}
+  caveat: The benefit comes from generated passwords; a manager full of reused passwords helps little.
+
+- tip: Change passwords and security questions on compromised accounts
+  rank: 39
+  area: Accounts
+  grade: B
+  finding: About 1.5% of logins on the web use credentials already exposed in breaches, so leaked passwords are actively tried.
+  source: {title: "Thomas et al., Protecting accounts from credential stuffing (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity19/presentation/thomas", year: 2019}
+  caveat: Shows the threat is common, not the effect of changing passwords.
+
+- tip: Don't tell anyone your passwords, even IT
+  rank: 7
+  area: Accounts
+  grade: C
+  finding: Plausible (pretexting scams ask for passwords), but no data on the effect of this behaviour was found.
+
+- tip: Keep written-down passwords somewhere safe
+  rank: 10
+  area: Accounts
+  grade: C
+  finding: Official guidance now tolerates written-down passwords; no outcome data was found.
+
+- tip: Don't store passwords in a file
+  rank: 14
+  area: Accounts
+  grade: C
+  finding: NIST lists copied password files as an example threat, without data on how often it happens.
+
+- tip: Be careful typing passwords on public computers
+  rank: 17
+  area: Accounts
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Use single sign-on (SSO)
+  rank: 33
+  area: Accounts
+  grade: C
+  finding: No data on the behaviour's effect for individuals was found.
+
+- tip: Encourage others to use strong passwords
+  rank: 6
+  area: Accounts
+  grade: C
+  finding: No data on the effect of encouraging others was found.
+
+- tip: Remember your passwords
+  rank: 9
+  area: Accounts
+  grade: X
+  finding: People who memorise passwords end up reusing them; a large study found the average user had 6.5 passwords shared across 3.9 sites each. Memorising at scale works against unique passwords.
+  source: {title: "Florencio & Herley, A Large-Scale Study of Web Password Habits (WWW)", url: "https://www.www2007.cpsc.ucalgary.ca/papers/paper620.pdf", year: 2007}
+  caveat: An inference from reuse data, not a direct test.
+
+- tip: Use a mix of letters, numbers and special characters
+  rank: 24
+  area: Accounts
+  grade: X
+  finding: NIST's digital identity guidelines tell services not to impose composition rules like these; length and checks against known-breached passwords matter more. Revision 4 (August 2025) reportedly tightened "should not" to "shall not".
+  source: {title: "NIST SP 800-63B (Revision 3), section 5.1.1.2", url: "https://pages.nist.gov/800-63-3/sp800-63b.html", year: 2017}
+  also: {title: "Enzoic, summary of NIST SP 800-63B Revision 4", url: "https://www.enzoic.com/blog/nist-sp-800-63b-rev4/", year: 2025}
+
+- tip: Replace letters with symbols in your passwords
+  rank: 32
+  area: Accounts
+  grade: X
+  finding: Cracking tools try common substitutions like "@" for "a" first, so they add little strength.
+  source: {title: "Ur et al., password perceptions study (CHI), CMU News", url: "https://www.cmu.edu/news/stories/archives/2016/july/password-perceptions.html", year: 2016}
+
+- tip: Update your devices
+  rank: 2
+  area: Updates & software
+  grade: A
+  finding: Across 82 million client hosts in 28,000 enterprises, patching applications on time had a significant effect on malware encounters.
+  source: {title: "Kotzias et al., Mind Your Own Business (NDSS)", url: "https://dev.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_03B-1-2_Kotzias_paper.pdf", year: 2019}
+  caveat: Enterprise hosts; the authors call the comparison a simple investigation.
+
+- tip: Turn on automatic updates
+  rank: 16
+  area: Updates & software
+  grade: B
+  finding: 21 days after a release, 97% of Chrome users (silent updates) ran the latest version, against 24% for a browser that needed a manual reinstall.
+  source: {title: "Duebendorfer & Frei, Why Silent Updates Boost Security (via Dark Reading)", url: "https://www.darkreading.com/risk/google-chrome-update-scheme-beats-firefox-safari-opera", year: 2009}
+  caveat: Measures how fast updates arrive, not attacks prevented.
+
+- tip: Use anti-malware software
+  rank: 3
+  area: Updates & software
+  grade: A
+  finding: Microsoft's telemetry found computers without antivirus 5.5 times more likely to be infected.
+  source: {title: "Microsoft Security Intelligence Report v14 (via SANS ISC)", url: "https://isc.sans.edu/diary/15659", year: 2013}
+  caveat: Observational vendor data, reported second-hand. Built-in protection (such as Microsoft Defender) counts.
+
+- tip: Keep antivirus up to date
+  rank: 12
+  area: Updates & software
+  grade: A
+  finding: PCs with up-to-date real-time protection had a 0.6% infection rate; with expired protection, 2.2%.
+  source: {title: "Microsoft Security Intelligence Report v17 (via Tom's Guide)", url: "https://www.tomsguide.com/us/danger-stale-av-software,news-19928.html", year: 2014}
+  caveat: Observational vendor data, reported second-hand.
+
+- tip: Install only trusted software
+  rank: 18
+  area: Updates & software
+  grade: A
+  finding: Android devices that installed apps only from Google Play were nine times less likely to get a potentially harmful app.
+  source: {title: "Google, Android Security 2017 Year in Review", url: "https://android-developers.googleblog.com/2018/03/android-security-2017-year-in-review.html", year: 2018}
+
+- tip: Don't use an administrator account day to day
+  rank: 19
+  area: Updates & software
+  grade: B
+  finding: Removing admin rights would have mitigated 56% of critical Microsoft vulnerabilities from 2020.
+  source: {title: "BeyondTrust Microsoft Vulnerabilities Report", url: "https://www.beyondtrust.com/press/beyondtrust-finds-56-percent-of-critical-microsoft-vulnerabilities-can-be-mitigated-by-removing-admin-rights", year: 2021}
+  caveat: Vendor analysis of vulnerabilities, not incidents.
+
+- tip: Read install prompts
+  rank: 29
+  area: Updates & software
+  grade: B
+  finding: Over half of the hosts examined had potentially unwanted programs, mostly bundled into other installers.
+  source: {title: "Kotzias et al., Measuring PUP Prevalence (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/kotzias", year: 2016}
+  caveat: Shows the threat is common, not the effect of reading prompts.
+
+- tip: Scan attachments for viruses before opening them
+  rank: 4
+  area: Updates & software
+  grade: C
+  finding: Mail providers and antivirus already scan automatically; no data on manual scanning was found.
+
+- tip: Set antivirus to run periodic full scans
+  rank: 35
+  area: Updates & software
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Lock your phone with a passcode or fingerprint
+  rank: 21
+  area: Devices
+  grade: B
+  finding: An estimated 31% of people in an online sample had snooped on someone else's phone in the past year.
+  source: {title: "Marques et al., Snooping on Mobile Phones (SOUPS)", url: "https://www.usenix.org/conference/soups2016/technical-sessions/presentation/marques", year: 2016}
+  caveat: Shows the threat is common, not the effect of a lock.
+
+- tip: Back up your data regularly
+  rank: 27
+  area: Devices
+  grade: B
+  finding: In a ransomware survey of public-sector victims, 68% recovered data from backups.
+  source: {title: "Sophos, State of Ransomware in State and Local Government", url: "https://www.sophos.com/en-us/blog/the-state-of-ransomware-in-state-and-local-government-2024", year: 2024}
+  caveat: Organisations, not individuals.
+
+- tip: Lock your computer when you step away
+  rank: 37
+  area: Devices
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Protect devices against power surges
+  rank: 26
+  area: Devices
+  grade: C
+  finding: A reliability measure rather than a security one; no data was found.
+
+- tip: Use end-to-end encrypted messaging
+  rank: 8
+  area: Network & messaging
+  grade: C
+  finding: CISA recommends it after the 2024 compromise of US telecom networks, but cites no measured data on individuals.
+  source: {title: "CISA, Mobile Communications Best Practice Guidance", url: "https://www.cisa.gov/sites/default/files/2024-12/guidance-mobile-communications-best-practices.pdf", year: 2024}
+
+- tip: Monitor network traffic on your router
+  rank: 13
+  area: Network & messaging
+  grade: C
+  finding: Impractical for most people; no data was found.
+
+- tip: Test your firewall
+  rank: 25
+  area: Network & messaging
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Don't do online banking on a public computer
+  rank: 38
+  area: Network & messaging
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Use a VPN
+  rank: 30
+  area: Network & messaging
+  grade: X
+  finding: Of 283 Android VPN apps studied, 38% had at least one malware report on VirusTotal and 18% sent traffic without encryption. We found no data showing a benefit for typical users.
+  source: {title: "Ikram et al., An Analysis of the Privacy and Security Risks of Android VPN Apps (IMC)", url: "https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf", year: 2016}
+  caveat: About the VPN app market; a well-chosen paid VPN would be C (no evidence either way).
+
+- tip: Beware of sharing personal information with people you don't know
+  rank: 34
+  area: Scams & privacy
+  grade: B
+  finding: Americans reported losing $2.95 billion to imposter scams in 2024.
+  source: {title: "FTC, Consumer Sentinel Network data for 2024", url: "https://www.ftc.gov/node/87602", year: 2025}
+  caveat: Shows the threat is common, not the effect of the behaviour.
+
+- tip: Don't identify yourself to websites
+  rank: 11
+  area: Scams & privacy
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Don't give out your email address without good reason
+  rank: 23
+  area: Scams & privacy
+  grade: C
+  finding: No data on the behaviour's effect was found.
+
+- tip: Set rules for your kids about the internet
+  rank: 28
+  area: Scams & privacy
+  grade: C
+  finding: Studies of parental rules exist with mixed results; none was checked for this list yet.
+
+- tip: Don't click on ads
+  rank: 40
+  area: Scams & privacy
+  grade: C
+  finding: Malicious ads mostly attack without a click; no data on the behaviour was found.
+
+- tip: Watch out for phishing
+  rank: 36
+  area: Scams & privacy
+  grade: C
+  finding: Phishing is common, but the usual way people are taught to watch out for it has weak evidence. In a study of over 19,500 hospital employees, recently completing security awareness training made no significant difference to how often people failed phishing tests.
+  source: {title: "Ho et al., Understanding the Efficacy of Phishing Training in Practice (IEEE S&P)", url: "https://sysnet.ucsd.edu/~voelker/pubs/phishtrain-oakland25.pdf", year: 2025}
+  caveat: Stay alert anyway; the defence with measured effect is 2-factor authentication (see above), which blocked 96% of bulk phishing in Google's study.
