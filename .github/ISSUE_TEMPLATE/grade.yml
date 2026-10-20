@@ -1,0 +1,52 @@
+name: Challenge a grade
+description: You have evidence that a tip's grade is wrong.
+labels: [evidence]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grades move on evidence, not opinion. See the rubric in [CONTRIBUTING.md](https://github.com/Dinosung/safedefaults/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: tip
+    attributes:
+      label: Tip
+      description: As it appears in the list.
+    validations:
+      required: true
+  - type: dropdown
+    id: grade
+    attributes:
+      label: The grade your evidence supports
+      options:
+        - "A: measured outcome tied to the behaviour"
+        - "B: indirect (attack simulations, fix speed, how common the threat is)"
+        - "C: no direct evidence"
+        - "X: little or no measured value, or harm"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source link
+      description: A study, official dataset or large vendor dataset.
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year published
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: The sentence or number that supports the grade
+      description: Quote it exactly, with the page or section.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything a critic would say
+      description: Sample size, who was studied, contrary results.

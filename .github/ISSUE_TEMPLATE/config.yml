@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discuss a tip without new evidence
+    url: https://github.com/Dinosung/safedefaults/discussions
+    about: Opinions and experience are welcome here, though only evidence moves a grade.

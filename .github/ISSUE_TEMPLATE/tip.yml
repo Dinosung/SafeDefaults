@@ -1,0 +1,14 @@
+name: Suggest a tip or fix
+description: A missing tip, a broken link, a typo or a translation fix.
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What should change
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source link, if any
+      placeholder: https://
