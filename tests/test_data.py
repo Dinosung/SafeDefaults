@@ -34,7 +34,10 @@ def test_readme_is_up_to_date():
     assert zh == build_readme.render_zh(TIPS), "run: python3 scripts/build_readme.py"
 
 
-def test_a_and_x_tips_have_chinese_text():
+def test_a_and_x_tips_say_what_to_do():
     for t in TIPS:
-        if t["grade"] in "AX":
-            assert t.get("zh", {}).get("tip") and t["zh"].get("finding"), t["tip"]
+        action = {"A": "do", "X": "instead"}.get(t["grade"])
+        if action:
+            assert t.get(action), t["tip"]
+            zh = t.get("zh", {})
+            assert zh.get("tip") and zh.get("finding") and zh.get(action), t["tip"]
