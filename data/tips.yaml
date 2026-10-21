@@ -1,7 +1,7 @@
-# The 40 security tips that experts ranked highest in Redmiles et al., "A Comprehensive Quality
+# The top 40 security tips that experts ranked highest in Redmiles et al., "A Comprehensive Quality
 # Evaluation of Security and Privacy Advice on the Web" (USENIX Security 2020;
 # https://securityadvice.cs.umd.edu/expert-ranking.html), graded by the evidence that following
-# them reduces harm. Tips 1 and 5 are merged ("use unique passwords" / "use different passwords").
+# them reduces harm. 39 entries: tips 1 and 5 are merged ("use unique passwords" / "use different passwords").
 #
 # grade: A = measured outcome (fewer infections, hijacks, compromises) tied to the behaviour
 #        B = indirect evidence (attack simulations, uptake, how common the threat is)
@@ -13,12 +13,13 @@
   rank: 22
   area: Accounts
   grade: A
-  finding: Microsoft measured multifactor authentication cutting the risk of account compromise by 99.22%. Google found that challenging suspicious sign-ins with an SMS code to a recovery phone blocked 100% of automated bots, 96% of bulk phishing and 76% of targeted attacks.
+  finding: "Among Microsoft business accounts flagged for suspicious sign-ins, multifactor authentication cut the risk of compromise by 99.22%, and authenticator apps outperformed text-message codes. Google found that challenging suspicious sign-ins with an SMS code to a recovery phone blocked 100% of automated bots, 96% of bulk phishing and 76% of targeted attacks."
   source: {title: "Meyer et al., How effective is multifactor authentication at deterring cyberattacks? (Microsoft)", url: "https://arxiv.org/abs/2305.00945", year: 2023}
   also: {title: "Google Security Blog: How effective is basic account hygiene", url: "https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html", year: 2019}
-  caveat: Microsoft's data are business accounts, in a preprint; Google's are its automatic sign-in challenges, not 2-step verification you turn on. Prefer an authenticator app or security key over SMS; all five US prepaid carriers tested could be tricked into SIM swaps (Lee et al., SOUPS 2020).
-  do: "Turn it on for your email first, then banking and social accounts (Google: myaccount.google.com/security; Apple: Settings > your name > Sign-In & Security). Use an authenticator app or security key if offered; a text-message code is still far better than none."
-  zh: {tip: "开启两步验证（2FA，又称双重认证）", finding: "微软测得多重验证可将账户被盗风险降低 99.22%。谷歌发现，在可疑登录时向辅助手机号发送短信验证码，挡住了 100% 的自动化攻击、96% 的批量钓鱼和 76% 的定向攻击。", do: "先给邮箱开启，再给银行和社交账号开启。能用验证器应用或安全密钥就用；短信验证码也远好于没有。", caveat: "微软的数据来自企业账户（预印本）；谷歌的数据是其自动登录验证，而非用户自己开启的两步验证。短信验证码可能被换卡（SIM 卡劫持）攻击绕过：一项研究测试的美国五家预付费运营商都能被骗办理换卡。"}
+  caveat: "Microsoft's data are a preprint on business accounts; Google's are its automatic sign-in challenges, not 2-step verification you turn on. Codes sent by text or shown in an app can still be phished in real time, and text codes can be stolen by SIM swaps; only passkeys and security keys resist phishing (CISA 2024)."
+  do: "Turn it on for your email first, then banking and social accounts. Apple: Settings > your name > Sign-In & Security (it is often already on). Google: myaccount.google.com/security. Microsoft and Outlook: account.microsoft.com > Security. Elsewhere, look for \"2-step verification\" or \"passkeys\" in the account's security settings. Best: a passkey or security key; next: an authenticator app; a text-message code is still far better than none. Never read a code out to anyone who contacts you."
+  kind: "vendor data"
+  zh: {tip: "开启两步验证（2FA）", finding: "在被标记为可疑登录的微软企业账户中，两步验证将账户被盗风险降低了 99.22%，验证器应用的效果优于短信验证码。谷歌发现，在可疑登录时向辅助手机号发送短信验证码，挡住了 100% 的自动化攻击、96% 的批量钓鱼和 76% 的定向攻击。", do: "邮箱、微信、支付宝、QQ、银行等应用：在“账号与安全”或“安全中心”里开启登录保护或设备锁。iPhone：设置 > 你的名字 > 登录与安全（通常已开启）。谷歌账户：myaccount.google.com/security。能用通行密钥或安全密钥最好，其次是验证器应用；短信验证码也远好于没有。验证码绝不告诉任何主动联系你的人。", caveat: "微软的数据是企业账户的预印本研究；谷歌的数据是其自动登录验证，而非用户自己开启的两步验证。短信和应用里的验证码仍可能被实时骗走，短信还可能因换卡被截获；只有通行密钥（passkey）和安全密钥能防钓鱼。"}
 
 - tip: Use unique passwords for different accounts
   rank: 1
@@ -27,8 +28,9 @@
   finding: With one password leaked from another site plus a few personal details, targeted guessing broke over 73% of normal users' accounts (32% of security-savvy users') within 100 guesses in a large attack simulation.
   source: {title: "Wang et al., Targeted Online Password Guessing (ACM CCS)", url: "https://www.passwordresearch.com/papers/paper763.html", year: 2016}
   caveat: An attack simulation, not observed compromises.
-  do: "Let a password manager create a different password for each account; the one built into your phone or browser is fine. Start with email and banking."
-  zh: {tip: "不同账户使用不同密码", finding: "在一项大型攻击模拟中，攻击者只要拿到用户在别的网站泄露的一个密码和少量个人信息，100 次猜测内就能攻破 73% 以上普通用户的账户。", do: "让密码管理器为每个账户生成不同的密码，手机或浏览器自带的就可以。先从邮箱和银行账户开始。"}
+  do: "Use one password manager that works on all your devices and let it create a different password for each account. With an iPhone or iPad and a Windows PC, use Apple's Passwords app and install iCloud for Windows; with Android and Windows, use Google Password Manager in Chrome. Change one account first and check you can sign in on every device, then do email and banking. No need to change a password that already works and isn't reused."
+  kind: "attack simulation"
+  zh: {tip: "不同账户使用不同密码", finding: "在一项大型攻击模拟中，攻击者只要拿到用户在别的网站泄露的一个密码和少量个人信息，100 次猜测内就能攻破 73% 以上普通用户的账户。", do: "选一个在你所有设备上都能用的密码管理器，让它为每个账户生成不同的密码。先改一个账户，确认每台设备都能登录，再改邮箱和银行。没有重复使用、能正常用的密码不必改。"}
 
 - tip: Use strong passwords
   rank: 15
@@ -37,19 +39,21 @@
   finding: In guessing experiments, long passwords (16+ characters) held up better against a powerful attacker than short passwords with complex rules, though complex 8-character passwords did better against the first guesses.
   source: {title: "Kelley et al., Guess Again (and Again and Again) (IEEE S&P)", url: "https://users.ece.cmu.edu/~lbauer/papers/2012/oakland2012-guessing.pdf", year: 2012}
   caveat: A lab study with passwords created for the experiment. Supports length, not complexity rules.
+  kind: "attack simulation"
 
 - tip: Don't base passwords on personal information
   rank: 20
   area: Accounts
   grade: B
-  finding: Guessing that uses only a person's public details beat the previous best method by 46% against normal users.
+  finding: "Guessing that uses a person's personal details beat the previous best method by 46% against normal users."
   source: {title: "Wang et al., Targeted Online Password Guessing (ACM CCS)", url: "https://www.passwordresearch.com/papers/paper763.html", year: 2016}
+  kind: "attack simulation"
 
 - tip: Use a password manager
   rank: 31
   area: Accounts
-  grade: B
-  finding: The evidence is mixed. One study found less password reuse when people created passwords with the manager, while browser auto-fill increased reuse; two real-world studies found no significant effect on reuse.
+  grade: "C"
+  finding: "The evidence is mixed. People who created passwords with the manager's generator reused fewer passwords, while browser auto-fill went with more reuse; two real-world studies found no significant effect on reuse."
   source: {title: "Lyastani et al., Better managed than memorized? (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity18/presentation/lyastani", year: 2018}
   also: {title: "Pearman et al., Let's go in for a closer look (ACM CCS)", url: "https://users.ece.cmu.edu/~lbauer/papers/2017/ccs2017-password-reuse.pdf", year: 2017}
   caveat: The benefit comes from passwords the manager generates; a manager full of reused passwords helps little.
@@ -58,17 +62,22 @@
   rank: 39
   area: Accounts
   grade: B
-  finding: Among users of a breach-alerting browser extension, 1.5% of logins used credentials already exposed in a breach; 26% of warnings led people to change their password.
+  finding: "Among users of a breach-alerting browser extension, 1.5% of logins used credentials already exposed in a breach, and 26% of warnings led people to change their password. Google found an attacker could guess 19.7% of English speakers' answers to \"favourite food\" in one try."
   source: {title: "Thomas et al., Protecting accounts from credential stuffing with password breach alerting (USENIX Security)", url: "https://www.usenix.org/system/files/sec19-thomas.pdf", year: 2019}
-  caveat: Shows exposed passwords are common and warnings get acted on, not the effect of changing them.
+  caveat: "Shows exposed passwords are common and guessable answers are weak, not the effect of changing them."
+  also: {title: "Google Security Blog: Some tough questions for security questions", url: "https://security.googleblog.com/2015/05/new-research-some-tough-questions-for.html", year: 2015}
+  kind: "vendor data"
 
 - tip: Don't tell anyone your passwords, even IT
   rank: 7
   area: Accounts
-  grade: B
+  grade: "A"
   finding: Google found people who had handed their password to a phisher were 400 times more likely to have their account hijacked than a random user.
-  source: {title: "Thomas et al., Data breaches, phishing, or malware? Understanding the risks of stolen credentials (ACM CCS)", url: "https://research.google/pubs/data-breaches-phishing-or-malware-understanding-the-risks-of-stolen-credentials/", year: 2017}
-  caveat: About disclosure to impostors posing as trusted parties, not to friends or real IT staff.
+  source: {title: "Thomas et al., Data breaches, phishing, or malware? Understanding the risks of stolen credentials (ACM CCS)", url: "https://faculty.cc.gatech.edu/~frankli/papers/google_account_compromise.pdf", year: 2017}
+  caveat: "Google's own data on its own accounts. About disclosure to impostors posing as trusted parties, not to friends or real IT staff."
+  do: "No real bank, IT department, Microsoft or Apple will ask for your password or the code they text you. If someone does, by phone, email or chat, stop and contact the organisation on a number you already know."
+  kind: "vendor data"
+  zh: {tip: "不要把密码告诉任何人，包括“IT 人员”", finding: "谷歌发现，把密码交给钓鱼者的人，账户被盗的可能性是普通用户的 400 倍。", do: "真正的银行、IT 部门、微软或苹果都不会索要你的密码或发给你的验证码。有人这样要求时（电话、邮件或聊天），停下，并通过你已知的官方号码联系对方核实。", caveat: "谷歌关于自家账户的数据；指的是交给冒充可信方的骗子，而非朋友或真正的 IT 人员。"}
 
 - tip: Keep written-down passwords somewhere safe
   rank: 10
@@ -113,23 +122,23 @@
 - tip: Use a mix of letters, numbers and special characters
   rank: 24
   area: Accounts
-  grade: X
-  finding: Tracking 154 people's real passwords for about 147 days, researchers found that using symbols and digits predicted more password reuse. NIST's guidelines now say services "shall not" require such mixes.
+  grade: "C"
+  finding: "The evidence is mixed. In guessing experiments, complex 8-character passwords resisted early guesses better, but long passwords did better against a powerful attacker; in a study of 154 people's real passwords, those with digits and symbols were more often reused. NIST now says services \"shall not\" require such mixes."
   source: {title: "Pearman et al., Let's go in for a closer look (ACM CCS)", url: "https://users.ece.cmu.edu/~lbauer/papers/2017/ccs2017-password-reuse.pdf", year: 2017}
   also: {title: "NIST SP 800-63B-4, section 3.1.1.2", url: "https://pages.nist.gov/800-63-4/sp800-63b.html", year: 2025}
-  caveat: An association in a small sample, not proof that mixing causes reuse; length matters more for strength (Kelley et al. 2012).
-  instead: "Make passwords long: three or four random words, or let a password manager generate one."
-  zh: {tip: "密码要混合字母、数字和符号", finding: "一项研究跟踪了 154 人约 147 天的真实密码，发现使用符号和数字的密码更容易被重复使用。美国 NIST 指南现已规定服务方“不得”强制这类组合规则。", instead: "改用长密码：三四个随机单词组成的短语，或者让密码管理器生成。", caveat: "这是小样本中的相关性，不能证明混合字符导致重复使用；就强度而言，长度更重要。"}
+  caveat: "The reuse finding is a correlation: sites that demand symbols may cause both. Length matters more than mixing; there is no need to change a password that works and isn't reused."
+  zh: {tip: "密码要混合字母、数字和符号", finding: "一项研究跟踪了 154 人约 147 天的真实密码，发现使用符号和数字的密码更容易被重复使用。美国 NIST 指南现已规定服务方“不得”强制这类组合规则。", caveat: "这是小样本中的相关性，不能证明混合字符导致重复使用；就强度而言，长度更重要。"}
 
 - tip: Replace letters with symbols in your passwords
   rank: 32
   area: Accounts
   grade: X
-  finding: Cracking tools anticipate common substitutions like "@" for "a", so they add little strength; in one example, "pAsswOrd" took 4,000 times more guesses to crack than "p@ssw0rd".
+  finding: "Cracking tools anticipate common substitutions like \"@\" for \"a\", so they add little strength; a guessing model predicted \"pAsswOrd\" would take 4,000 times more guesses to crack than \"p@ssw0rd\", which people rated stronger."
   source: {title: "Ur et al., Do Users' Perceptions of Password Security Match Reality? (CHI), via CMU News", url: "https://www.cmu.edu/news/stories/archives/2016/july/password-perceptions.html", year: 2016}
-  caveat: Based on simulated cracking, not observed attacks.
-  instead: "Add length rather than symbols; a password manager's random passwords beat any substitution."
-  zh: {tip: "用符号替换密码中的字母", finding: "破解工具早已把“@ 代替 a”这类常见替换考虑在内，几乎不增加强度；例如“pAsswOrd”需要的猜测次数是“p@ssw0rd”的 4000 倍。", instead: "与其加符号，不如加长度；密码管理器生成的随机密码比任何替换都强。", caveat: "基于模拟破解，而非真实攻击。"}
+  caveat: "Based on a guessing model and one example, not observed attacks."
+  instead: "Add length rather than symbols: a few random words, or a password your password manager creates. No need to change a password that works and isn't reused."
+  kind: "attack simulation"
+  zh: {tip: "用符号替换密码中的字母", finding: "破解工具早已把“@ 代替 a”这类常见替换考虑在内，几乎不增加强度；一个猜测模型预测，人们以为更强的“p@ssw0rd”反而比“pAsswOrd”少 4000 倍的猜测次数就会被破解。", instead: "与其加符号，不如加长度：几个随机词语（拼音或英文均可）拼在一起，或用密码管理器生成。没有重复使用、能正常用的密码不必改。", caveat: "基于猜测模型和一个例子，而非真实攻击。"}
 
 - tip: Update your devices
   rank: 2
@@ -138,16 +147,18 @@
   finding: Among enterprises with 1,000+ machines, the slowest patchers (500 days to patch 90% of machines, against under 10 for the fastest) encountered more malware.
   source: {title: "Kotzias et al., Mind Your Own Business (NDSS)", url: "https://dev.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_03B-1-2_Kotzias_paper.pdf", year: 2019}
   caveat: The paper calls this a simple investigation and reports no malware figures or statistical test, so it is graded B.
-  do: "Turn on automatic updates (iPhone: Settings > General > Software Update > Automatic Updates; Android: Settings > System > Software update; Windows: Settings > Windows Update) and restart when asked."
-  zh: {tip: "及时更新设备", finding: "在拥有 1000 台以上电脑的企业中，打补丁最慢的企业（90% 的电脑要 500 天才更新，最快的不到 10 天）遇到的恶意软件更多。", do: "打开自动更新（iPhone：设置 > 通用 > 软件更新 > 自动更新；Windows：设置 > Windows 更新），提示重启时就重启。", caveat: "论文称这只是一项简单的比较，没有给出恶意软件数量或统计检验，因此评为 B。"}
+  do: "Turn on automatic updates and restart when asked. iPhone and iPad: Settings > General > Software Update > Automatic Updates > turn on Automatically Install. Android: Settings > System > Software update. Windows 11: Settings > Windows Update. Windows 10: Settings > Update & Security > Windows Update; Windows 10 now needs Extended Security Updates, free for home users until 12 October 2027, so accept the free enrolment if it is offered. A device that no longer gets updates should not be used for banking or email."
+  kind: "observational study"
+  zh: {tip: "及时更新设备", finding: "在拥有 1000 台以上电脑的企业中，打补丁最慢的企业（90% 的电脑要 500 天才更新，最快的不到 10 天）遇到的恶意软件更多。", do: "打开自动更新，提示重启时就重启。iPhone/iPad：设置 > 通用 > 软件更新 > 自动更新 > 开启“自动安装”。安卓/鸿蒙手机：打开设置，搜索“软件更新”，开启自动下载并安装。Windows：设置 > Windows 更新。不再收到更新的旧设备，不要再用来登录银行或邮箱。", caveat: "论文称这只是一项简单的比较，没有给出恶意软件数量或统计检验，因此评为 B。"}
 
 - tip: Turn on automatic updates
   rank: 16
   area: Updates & software
   grade: B
-  finding: 21 days after a release, 97% of Chrome users (silent updates) ran the latest version, against 24% for a browser that needed a manual reinstall.
+  finding: "21 days after a 2009 release, 97% of Chrome users (silent updates) ran the latest version, against 85% for Firefox (prompted updates) and 24% for a browser that needed a manual reinstall."
   source: {title: "Duebendorfer & Frei, Why Silent Updates Boost Security (via Dark Reading)", url: "https://www.darkreading.com/risk/google-chrome-update-scheme-beats-firefox-safari-opera", year: 2009}
   caveat: Measures how fast updates arrive, not attacks prevented.
+  kind: "observational study"
 
 - tip: Use anti-malware software
   rank: 3
@@ -157,8 +168,9 @@
   source: {title: "Microsoft Security Intelligence Report v14 (via SANS ISC)", url: "https://isc.sans.edu/diary/15659", year: 2013}
   also: {title: "Lévesque et al., A Clinical Study of Risk Factors Related to Malware Infections (ACM CCS)", url: "https://people.scs.carleton.ca/~soma/pubs/levesque-ccs2013.pdf", year: 2013}
   caveat: Observational vendor data, reported second-hand; protected and unprotected PCs differ in other ways too. In a 4-month study of 50 users, 20% were infected by something their antivirus missed. Built-in protection (such as Microsoft Defender) counts.
-  do: "On Windows, keep the built-in Microsoft Defender switched on (Windows Security > Virus & threat protection). Macs, iPhones and Android phones have protection built in; you don't need to buy an extra app."
-  zh: {tip: "使用反恶意软件", finding: "微软遥测数据显示，没有杀毒保护的电脑被感染的可能性是有保护电脑的 5.5 倍。", do: "Windows 上保持自带的 Microsoft Defender 开启即可；Mac、iPhone 和安卓手机都有内置防护，不需要另外购买安全软件。", caveat: "系统自带的防护就算数。这是厂商的观察数据，经第三方转述，有无防护的电脑在其他方面也有差异；一项研究发现 20% 的用户被杀毒软件漏检的程序感染。"}
+  do: "On Windows, Microsoft Defender is built in: open Start, type \"Windows Security\", and check Virus & threat protection is on. If a trial of McAfee, Norton or similar came with the laptop and asks you to pay, you don't have to: uninstall it (Settings > Apps) and Defender switches back on. Macs, iPhones, iPads and Android phones have protection built in; you don't need to buy an extra app."
+  kind: "vendor data"
+  zh: {tip: "使用反恶意软件", finding: "微软遥测数据显示，没有杀毒保护的电脑被感染的可能性是有保护电脑的 5.5 倍。", do: "Windows 自带 Microsoft Defender：在开始菜单搜索“Windows 安全中心”，确认“病毒和威胁防护”已开启。电脑预装的杀毒软件试用版到期要求付费时，不必续费，卸载后 Defender 会自动开启。Mac 和 iPhone 有内置防护；国内安卓手机一般有厂商自带的安全检测，不需要另外购买安全软件。", caveat: "系统自带的防护就算数。这是厂商的观察数据，经第三方转述，有无防护的电脑在其他方面也有差异；一项研究发现 20% 的用户被杀毒软件漏检的程序感染。"}
 
 - tip: Keep antivirus up to date
   rank: 12
@@ -167,8 +179,9 @@
   finding: Consumer and small-business PCs with up-to-date real-time protection had a 0.6% infection rate; with expired protection, 2.2%; with none, 2.4%.
   source: {title: "Microsoft Security Intelligence Report v17 (via Tom's Guide)", url: "https://www.tomsguide.com/us/danger-stale-av-software,news-19928.html", year: 2014}
   caveat: Observational vendor data, reported second-hand.
-  do: "Nothing to do if you use the built-in protection: it updates with your system. If you pay for an antivirus, don't let the subscription lapse."
-  zh: {tip: "保持杀毒软件更新", finding: "实时防护保持更新的个人和小企业电脑感染率为 0.6%，防护过期的为 2.2%，没有防护的为 2.4%。", do: "用系统自带的防护就无需操作，它会随系统一起更新；如果用付费杀毒软件，别让订阅过期。", caveat: "厂商的观察数据，经第三方转述。"}
+  do: "Nothing to do if you use the built-in protection: it updates with your system."
+  kind: "vendor data"
+  zh: {tip: "保持杀毒软件更新", finding: "实时防护保持更新的个人和小企业电脑感染率为 0.6%，防护过期的为 2.2%，没有防护的为 2.4%。", do: "用系统自带的防护就无需操作，它会随系统一起更新。", caveat: "厂商的观察数据，经第三方转述。"}
 
 - tip: Install only trusted software
   rank: 18
@@ -178,7 +191,8 @@
   source: {title: "Google, Android Security 2017 Year in Review", url: "https://android-developers.googleblog.com/2018/03/android-security-2017-year-in-review.html", year: 2018}
   caveat: Google's own observational data about its own store; devices that sideload apps may differ in other ways.
   do: "Install apps only from the official store (App Store, Google Play, Microsoft Store) or the maker's own website. On Android, leave \"Install unknown apps\" switched off."
-  zh: {tip: "只安装可信来源的软件", finding: "只从 Google Play 安装应用的安卓设备，装到有害应用的概率只有其他设备的九分之一。", do: "只从官方应用商店或软件官网安装。在中国大陆，可理解为只用手机厂商自带的官方应用商店，不安装来路不明的 APK。", caveat: "谷歌关于自家商店的观察数据；安装外部应用的设备可能在其他方面也不同。"}
+  kind: "vendor data"
+  zh: {tip: "只安装可信来源的软件", finding: "只从 Google Play 安装应用的安卓设备，装到有害应用的概率只有其他设备的九分之一。", do: "只从官方应用商店或软件官网安装。在中国大陆，可理解为只用手机厂商自带的官方应用商店，不安装来路不明的 APK。", caveat: "谷歌关于自家商店的观察数据；国内厂商应用商店没有同类公开数据，“只用厂商官方商店”是推论。"}
 
 - tip: Don't use an administrator account day to day
   rank: 19
@@ -186,7 +200,8 @@
   grade: B
   finding: Removing admin rights would have mitigated 56% of critical Microsoft vulnerabilities from 2020.
   source: {title: "BeyondTrust Microsoft Vulnerabilities Report", url: "https://www.beyondtrust.com/press/beyondtrust-finds-56-percent-of-critical-microsoft-vulnerabilities-can-be-mitigated-by-removing-admin-rights", year: 2021}
-  caveat: Vendor analysis of vulnerabilities, not incidents.
+  caveat: "A vendor of privilege-management software reading Microsoft's advisories, not observed incidents. The experts' wording was \"use administrator rights to prevent unauthorized actions\"; we read it as limiting who has them."
+  kind: "vendor analysis"
 
 - tip: Read install prompts
   rank: 29
@@ -195,6 +210,7 @@
   finding: 54% of 3.9 million hosts examined had potentially unwanted programs, much of it installed by other unwanted programs and pay-per-install bundlers.
   source: {title: "Kotzias et al., Measuring PUP Prevalence (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/kotzias", year: 2016}
   caveat: Shows the threat is common, not the effect of reading prompts.
+  kind: "observational study"
 
 - tip: Scan attachments for viruses before opening them
   rank: 4
@@ -212,19 +228,21 @@
   rank: 21
   area: Devices
   grade: B
-  finding: An estimated 31% of people in an online sample had snooped on someone else's phone in the past year.
+  finding: "Weighted to the US population, about 1 in 5 adults had snooped on someone else's phone in the past year."
   source: {title: "Marques et al., Snooping on Mobile Phones (SOUPS)", url: "https://www.usenix.org/conference/soups2016/technical-sessions/presentation/marques", year: 2016}
   caveat: Shows the threat is common, not the effect of a lock.
+  kind: "survey"
 
 - tip: Back up your data regularly
   rank: 27
   area: Devices
   grade: B
-  finding: In a 2024 ransomware survey, 78% of state and local government victims (68% across all sectors) restored encrypted data from backups.
+  finding: "In a 2024 survey of organisations in 14 countries, 78% of state and local government ransomware victims (68% across all sectors) restored encrypted data from backups."
   source: {title: "Sophos, State of Ransomware in State and Local Government", url: "https://www.sophos.com/en-us/blog/the-state-of-ransomware-in-state-and-local-government-2024", year: 2024}
-  caveat: A vendor survey of mid-size organisations, not individuals.
-  do: "Turn on your phone's cloud backup (iCloud or Google One) and keep a second copy of family photos and documents on another service or an external drive."
-  zh: {tip: "定期备份数据", finding: "2024 年的一项勒索软件调查中，78% 的美国州和地方政府受害机构（所有行业为 68%）靠备份恢复了被加密的数据。", do: "打开手机的云备份（iCloud 或 Google One；国内手机可用厂商云服务），并把家庭照片和重要文件在另一个云服务或移动硬盘上再存一份。"}
+  caveat: "A vendor survey of organisations with 100-5,000 employees, self-reported; not individuals."
+  do: "iPhone and iPad: Settings > your name > iCloud > iCloud Backup > turn on. Android: Settings > System > Backup. If Apple or Google says your storage is full, the paid upgrade inside Settings is genuine; never pay through a pop-up or an email. A second copy of photos and documents on a USB drive you already own is a good extra."
+  kind: "survey"
+  zh: {tip: "定期备份数据", finding: "2024 年一项覆盖 14 个国家的勒索软件调查中，78% 的州和地方政府受害机构（全球所有行业为 68%）靠备份恢复了被加密的数据。", do: "iPhone/iPad：设置 > 你的名字 > iCloud > iCloud 云备份 > 开启。安卓/鸿蒙手机：使用厂商云服务（华为云空间、小米云服务、OPPO/vivo 云服务）。云空间不足时，只在系统设置里付费升级，不要通过弹窗或邮件付款。再用一个现有的 U 盘或移动硬盘存一份照片和文件更好。"}
 
 - tip: Lock your computer when you step away
   rank: 37
@@ -267,9 +285,9 @@
   rank: 30
   area: Network & messaging
   grade: C
-  finding: "No data showing a benefit for typical users was found. Free VPN apps carry real risks: of 283 free Android VPN apps studied in 2015, 18% tunnelled traffic without encryption and 4% were flagged as malware by more than five scanners (38% by at least one)."
+  finding: "No data showing a benefit for typical users was found. Free-to-download VPN apps carry real risks: of 283 such Android apps studied in 2015, 18% tunnelled traffic without encryption and 4% were flagged as malware by more than five scanners (38% by at least one)."
   source: {title: "Ikram et al., An Analysis of the Privacy and Security Risks of Android VPN Apps (IMC)", url: "https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf", year: 2016}
-  caveat: At home you don't need one for safety; on public Wi-Fi, sites using https are already encrypted. If you use one, pay for one from a known company and avoid free VPN apps.
+  caveat: "At home you don't need one for safety; on public Wi-Fi, sites using https are already encrypted. Our suggestion, not evidence: if you use one, choose a provider with a good reputation over a free app."
 
 - tip: Beware of sharing personal information with people you don't know
   rank: 34
@@ -277,7 +295,8 @@
   grade: B
   finding: Americans reported losing $2.95 billion to imposter scams in 2024.
   source: {title: "FTC, Consumer Sentinel Network data for 2024", url: "https://www.ftc.gov/node/87602", year: 2025}
-  caveat: Shows the threat is common, not the effect of the behaviour.
+  caveat: "About imposter scams in general, not the effect of sharing less."
+  kind: "threat prevalence"
 
 - tip: Don't identify yourself to websites
   rank: 11
@@ -307,12 +326,16 @@
   finding: Over 80% of the social-engineering download attacks seen on a large network started from ads on sites people visited, mostly pushing adware and unwanted programs.
   source: {title: "Nelms et al., Towards Measuring and Mitigating Social Engineering Software Download Attacks (USENIX Security)", url: "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/nelms", year: 2016}
   caveat: Shows the threat is common, not the effect of avoiding clicks.
+  kind: "observational study"
 
 - tip: Watch out for phishing
   rank: 36
   area: Scams & privacy
   grade: B
   finding: Phishing victims were 400 times more likely to have their account hijacked than a random Google user, and phishing/spoofing was the most-reported crime type to the FBI in 2024 (193,407 complaints).
-  source: {title: "Thomas et al., Data breaches, phishing, or malware? Understanding the risks of stolen credentials (ACM CCS)", url: "https://research.google/pubs/data-breaches-phishing-or-malware-understanding-the-risks-of-stolen-credentials/", year: 2017}
+  source: {title: "Thomas et al., Data breaches, phishing, or malware? Understanding the risks of stolen credentials (ACM CCS)", url: "https://faculty.cc.gatech.edu/~frankli/papers/google_account_compromise.pdf", year: 2017}
   also: {title: "FBI IC3, 2024 Internet Crime Report", url: "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf", year: 2025}
-  caveat: The threat is well measured. The usual defence, awareness training, has been measured and found to do little; in a randomised study of over 19,500 hospital employees, recent training made no significant difference to phishing test failures (Ho et al., IEEE S&P 2025). 2-factor authentication limits the damage when a password is phished.
+  caveat: "Shows the threat is common and costly, not the effect of watching out. Awareness training alone has been measured and found to do little: in a study of over 19,500 hospital employees, recent annual training was not associated with fewer phishing-test failures, and randomised embedded training made very little difference (Ho et al., IEEE S&P 2025). Calling back on a number you know, and passkeys, limit the damage."
+  do: "If a call, text, email or pop-up asks for a password, a code, a payment or remote access to your computer, stop. Hang up or close it, then contact the company on a number you already know, such as the one on your card or bill. Real banks, Microsoft and Apple never ask for the code they text you."
+  kind: "vendor data; official statistics"
+  zh: {tip: "警惕钓鱼和诈骗", finding: "被钓鱼骗走密码的人，账户被盗的可能性是普通谷歌用户的 400 倍；2024 年美国 FBI 收到最多的投诉类型就是钓鱼/仿冒（193,407 起）。", do: "任何电话、短信、邮件或弹窗索要密码、验证码、转账或远程控制电脑，一律停下：挂断或关闭，再通过你已知的官方号码（如银行卡背面的电话）核实。自称客服、公检法要求转账的，都是诈骗。软件只从官网或手机自带应用商店下载，别点下载站的“高速下载”按钮，安装时取消勾选捆绑软件。"}
