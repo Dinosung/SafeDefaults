@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Grades move on evidence, not opinion. See the rubric in [CONTRIBUTING.md](https://github.com/Dinosung/SafeDefaults/blob/main/CONTRIBUTING.md).
+        Grades move on evidence, not opinion. Any language is fine (可用中文填写). See the rubric in [CONTRIBUTING.md](https://github.com/Dinosung/SafeDefaults/blob/main/CONTRIBUTING.md).
   - type: input
     id: tip
     attributes:
