@@ -1,0 +1,2 @@
+evidence|0E8A16|A grade challenge or new evidence for a tip
+translation|1D76DB|Chinese page or other translations

@@ -1,0 +1,21 @@
+name: Labels
+# Creates or updates the labels listed in .github/labels.txt (name|colour|description).
+on:
+  push:
+    branches: [main]
+    paths: [.github/labels.txt, .github/workflows/labels.yml]
+permissions:
+  issues: write
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          while IFS='|' read -r name color description; do
+            [ -n "$name" ] && gh label create "$name" --color "$color" --description "$description" --force --repo "$GITHUB_REPOSITORY"
+          done < .github/labels.txt
