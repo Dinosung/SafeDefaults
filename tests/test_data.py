@@ -41,3 +41,9 @@ def test_a_and_x_tips_say_what_to_do():
             assert t.get(action), t["tip"]
             zh = t.get("zh", {})
             assert zh.get("tip") and zh.get("finding") and zh.get(action), t["tip"]
+
+
+def test_graded_tips_say_what_kind_of_evidence():
+    for t in TIPS:
+        if t["grade"] in "ABX":
+            assert t.get("kind"), t["tip"]
