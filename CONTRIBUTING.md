@@ -19,7 +19,7 @@ own they can't move a grade above C. Issues in Chinese are fine.
 
 - **A**: a measured outcome (fewer infections, hijacks or compromises) tied to the behaviour itself.
 - **B**: indirect evidence: attack simulations, how fast fixes arrive, or how common the threat is.
-- **C**: no direct evidence found.
+- **C**: no direct evidence found, or the evidence is mixed.
 - **X**: evidence of little or no measured value, or of harm.
 
 ## Editing the data yourself
@@ -32,5 +32,7 @@ python3 scripts/build_readme.py
 pip install pyyaml pytest && pytest -q
 ```
 
-A, B and X tips need a source with a link and year. A tips need a `do` line (what to do, in plain
+A, B and X tips need a source with a link and year, and a `kind` saying what sort of evidence it is
+(vendor data, observational study, randomised trial, attack simulation, survey, threat prevalence).
+Apply the rubric the same way to every tip: mixed or null evidence is C. A tips need a `do` line (what to do, in plain
 words) and X tips an `instead` line; give a Chinese version of both under `zh`.
